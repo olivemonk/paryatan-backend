@@ -1,14 +1,26 @@
 const express = require('express')
+const mongoose = require('mongoose')
 const cors = require('cors')
+const dotenv = require('dotenv')
+dotenv.config()
 
-const app = express()
+const userRouter = require('./routes/userRoute')
+const server = express()
 
-app.use(cors())
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+  
+main().then(()=>console.log('Connected to MongoDB')).catch(err => console.log(err))
+async function main() {
+  await mongoose.connect(process.env.MONGO_URI);
+}
 
-app.listen(8000, () => {
-    console.log('Example app listening on port 8000!')
+
+
+server.use(cors())
+server.use(express.json())
+server.use('/users', userRouter.router)
+
+
+server.listen(process.env.PORT, ()=>{
+  console.log('Server is running at ' + process.env.PORT)
 })
