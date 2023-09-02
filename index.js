@@ -4,7 +4,10 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 dotenv.config()
 
+
+const auth = require('./middlewares/auth')
 const userRouter = require('./routes/userRoute')
+const tripRouter = require('./routes/tripRoute')
 const server = express()
 
 
@@ -29,7 +32,15 @@ const connectDB = async () => {
 
 server.use(cors())
 server.use(express.json())
+
+server.use((req,res,next) => {
+  console.log("HTTP Method: ", req.method, " URL: ", req.url, " Time: ", Date.now())
+  next();
+})
+
+
 server.use('/users', userRouter.router)
+server.use('/trip',auth, tripRouter.router)
 
 
 

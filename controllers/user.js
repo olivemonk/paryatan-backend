@@ -23,6 +23,7 @@ exports.createUser = async (req, res) => {
         res.status(400).json(err);
       });
   } catch (error) {
+    res.status(400).json({ message: "Error creating user" });
     throw new Error(error);
   }
   //   console.log(req.body)
@@ -48,6 +49,7 @@ exports.loginUser = async (req, res) => {
       res.status(401).json({ message: "Invalid email" });
     }
   } catch (error) {
+    res.status(400).json({ message: "Error logging in user" });
     throw new Error(error);
   }
 };
