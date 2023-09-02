@@ -5,6 +5,7 @@ const bcrypt = require("bcrypt");
 const router = express.Router();
 router
   .post("/register", userController.createUser)
-  .post("/login", userController.loginUser);
+  .post("/login", userController.loginUser)
+  .get("/all", userController.allUsers);
 
 exports.router = router;

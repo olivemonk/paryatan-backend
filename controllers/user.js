@@ -51,3 +51,13 @@ exports.loginUser = async (req, res) => {
     throw new Error(error);
   }
 };
+
+
+exports.allUsers = async (req,res) => {
+  try {
+    const users = await User.find({}).select('-password')
+    res.status(200).json(users)
+  } catch (error) {
+    throw new Error(error)
+  }
+}
