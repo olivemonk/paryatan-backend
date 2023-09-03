@@ -40,7 +40,7 @@ server.use((req,res,next) => {
 
 
 server.use('/users', userRouter.router)
-server.use('/trip',auth, tripRouter.router)
+server.use('/trip', tripRouter.router)
 
 
 
