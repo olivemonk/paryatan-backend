@@ -4,7 +4,7 @@ const tripController = require('../controllers/trip')
 const router = express.Router();
 router
     .post('/create', tripController.createTrip)
-    .post('/all', tripController.allTrips)
-    .get('/user', tripController.userTrips)
+    .post('/usertrip', tripController.userAllTrips)
+    .get('/alltrip',tripController.allTrips)
 
 exports.router = router;
