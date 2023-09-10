@@ -40,7 +40,7 @@ server.use((req,res,next) => {
 
 
 server.use('/users', userRouter.router)
-server.use('/trip', tripRouter.router)
+server.use('/trip', auth,tripRouter.router)
 
 
 
@@ -49,8 +49,3 @@ connectDB().then(() => {
       console.log("listening for requests");
   })
 }).catch(err => console.log(err))
-
-
-// server.listen(process.env.PORT, ()=>{
-//   console.log('Server is running at ' + process.env.PORT)
-// })

@@ -26,7 +26,6 @@ exports.createUser = async (req, res) => {
     res.status(400).json({ message: "Error creating user" });
     throw new Error(error);
   }
-  //   console.log(req.body)
 };
 
 //login
@@ -39,7 +38,6 @@ exports.loginUser = async (req, res) => {
           _id: user._id,
           name: user.name,
           email: user.email,
-          password: user.password,
           token: generateLogToken(user),
         });
       } else {

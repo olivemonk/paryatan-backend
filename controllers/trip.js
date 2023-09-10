@@ -32,24 +32,8 @@ exports.createTrip = async (req, res) => {
   }
 };
 
-// exports.userTrips = async (req, res) => {
-//   try {
-//     email = req.query.email;
-//     const trips = await Trip.find({ userEmail: email });
-//     if (trips.length !== 0) {
-//       res.status(201).json(trips);
-//     } else {
-//       res.status(201).json({ message: "No trips found" });
-//     }
-//   } catch (error) {
-//     res.status(400).json({ message: "Error getting user trips" });
-//     throw new Error(error);
-//   }
-// };
-
 exports.allTrips = async (req, res) => {
   try {
-    // console.log('hello')
     const trips = await Trip.find({});
     if (trips.length !== 0) {
       res.status(201).json(trips);
@@ -64,9 +48,7 @@ exports.allTrips = async (req, res) => {
 
 exports.userAllTrips = async (req, res) => {
   try {
-    // console.log(req.body);
     const trips = await Trip.find({ userEmail: req.body.userEmail });
-    // console.log(trips);
     if (trips.length !== 0) {
       res.status(201).json(trips);
     } else {
